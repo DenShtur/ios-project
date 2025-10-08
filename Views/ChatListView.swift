@@ -24,7 +24,7 @@ struct ChatListView: View {
                     }
                 }
             }
-            .navigationTitle("Чаты")
+                .navigationTitle("Chats")
             .onAppear {
                 viewModel.loadChats()
             }

@@ -4,7 +4,6 @@
 //
 //  Created by Денис Штурман on 06.10.2025.
 //
-
 import Testing
 @testable import Demo_Speckit_messageApp
 

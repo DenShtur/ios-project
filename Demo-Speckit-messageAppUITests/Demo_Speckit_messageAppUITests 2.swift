@@ -4,7 +4,6 @@
 //
 //  Created by Денис Штурман on 06.10.2025.
 //
-
 import XCTest
 
 final class Demo_Speckit_messageAppUITests: XCTestCase {
