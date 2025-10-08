@@ -11,28 +11,59 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
-            List(viewModel.messages) { message in
-                HStack(alignment: .top) {
-                    Image(systemName: "person.crop.circle")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                    VStack(alignment: .leading) {
-                        Text(message.sender.name)
-                            .font(.caption)
-                        if let text = message.text {
-                            Text(text)
-                                .padding(8)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
-                        } else if let media = message.media {
-                            Text("[Медиа: \(media.type.rawValue)]")
-                                .italic()
+            ScrollView {
+                VStack(spacing: 8) {
+                    ForEach(viewModel.messages) { message in
+                        let isMe = message.sender.id == (viewModel.chat.participants.first?.id ?? "me")
+                        HStack {
+                            if isMe {
+                                Spacer()
+                                VStack(alignment: .trailing) {
+                                    if let text = message.text {
+                                        Text(text)
+                                            .padding(10)
+                                            .background(Color.blue.opacity(0.2))
+                                            .cornerRadius(12)
+                                            .foregroundColor(.black)
+                                    } else if let media = message.media {
+                                        Text("[Медиа: \(media.type.rawValue)]")
+                                            .italic()
+                                    }
+                                    Text("\(message.timestamp, formatter: dateFormatter)")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                                Image(systemName: "person.crop.circle")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                            } else {
+                                Image(systemName: "person.crop.circle")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                VStack(alignment: .leading) {
+                                    Text(message.sender.name)
+                                        .font(.caption)
+                                    if let text = message.text {
+                                        Text(text)
+                                            .padding(10)
+                                            .background(Color(.systemGray6))
+                                            .cornerRadius(12)
+                                            .foregroundColor(.black)
+                                    } else if let media = message.media {
+                                        Text("[Медиа: \(media.type.rawValue)]")
+                                            .italic()
+                                    }
+                                    Text("\(message.timestamp, formatter: dateFormatter)")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                            }
                         }
-                        Text("\(message.timestamp, formatter: dateFormatter)")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
                     }
                 }
+                .padding(.vertical)
+            }
             }
             HStack {
                 TextField("Сообщение...", text: $messageText)

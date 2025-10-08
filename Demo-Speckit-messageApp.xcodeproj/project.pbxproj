@@ -29,6 +29,65 @@
 		928271FC2E93A83C00118C0D /* Demo-Speckit-messageAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Demo-Speckit-messageAppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		92A261DB2E9651EE0047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				.gemini/commands/analyze.toml,
+				.gemini/commands/clarify.toml,
+				.gemini/commands/constitution.toml,
+				.gemini/commands/implement.toml,
+				.gemini/commands/plan.toml,
+				.gemini/commands/specify.toml,
+				.gemini/commands/tasks.toml,
+				.github/workflows/ci.yml,
+				.specify/memory/constitution.md,
+				.specify/memory/specify.md,
+				".specify/scripts/bash/check-prerequisites.sh",
+				.specify/scripts/bash/common.sh,
+				".specify/scripts/bash/create-new-feature.sh",
+				".specify/scripts/bash/setup-plan.sh",
+				".specify/scripts/bash/update-agent-context.sh",
+				".specify/templates/agent-file-template.md",
+				".specify/templates/plan-template.md",
+				".specify/templates/spec-template.md",
+				".specify/templates/tasks-template.md",
+				CoreData/ChatEntity.swift,
+				CoreData/CoreDataStack.swift,
+				CoreData/MessageEntity.swift,
+				Models/Chat.swift,
+				Models/Media.swift,
+				Models/Message.swift,
+				Models/User.swift,
+				README.md,
+				Services/MattermostAPIService.swift,
+				"specs/001-ios-swiftui-mattermost/plan.md",
+				"specs/001-ios-swiftui-mattermost/spec.md",
+				"specs/001-ios-swiftui-mattermost/tasks.md",
+				Tests/Integration/MessageSyncIntegrationTests.swift,
+				Tests/Integration/PushNotificationIntegrationTests.swift,
+				Tests/Integration/ThemeIntegrationTests.swift,
+				Tests/Unit/ChatModelTests.swift,
+				Tests/Unit/MattermostAPIServiceTests.swift,
+				Tests/Unit/MediaModelTests.swift,
+				Tests/Unit/MessageModelTests.swift,
+				Tests/Unit/UserModelTests.swift,
+				ViewModels/ChatListViewModel.swift,
+				ViewModels/ChatViewModel.swift,
+				Views/ChatListView.swift,
+				Views/ChatView.swift,
+			);
+			target = 928271E42E93A83A00118C0D /* Demo-Speckit-messageApp */;
+		};
+		92A261DE2E9652B60047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageAppUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Tests/Unit/MediaModelTests.swift,
+			);
+			target = 928271FB2E93A83C00118C0D /* Demo-Speckit-messageAppUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		928271E72E93A83A00118C0D /* Demo-Speckit-messageApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -42,6 +101,10 @@
 		};
 		928271FF2E93A83C00118C0D /* Demo-Speckit-messageAppUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				92A261DB2E9651EE0047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageApp" target */,
+				92A261DE2E9652B60047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageAppUITests" target */,
+			);
 			path = "Demo-Speckit-messageAppUITests";
 			sourceTree = "<group>";
 		};

@@ -11,7 +11,7 @@ import SwiftUI
 struct Demo_Speckit_messageAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ChatListView()
+            ContentView()
         }
     }
 }

@@ -2,27 +2,35 @@ import Foundation
 
 class MattermostAPIService {
     private let baseURL = URL(string: "https://your-mattermost-server.com/api/v4")!
-    private let token = "" // Замените на реальный токен
+    private let token = "YOUR_MATTERMOST_TOKEN" // Замените на реальный токен
     
     // Получение списка чатов
     func fetchChats(completion: @escaping (Result<[Chat], Error>) -> Void) {
-        // Тестовая заглушка: возвращаем фиктивные чаты с корректными структурами
-        let user1 = User(id: "u1", name: "Иван", avatarURL: nil, status: nil)
-        let user2 = User(id: "u2", name: "Мария", avatarURL: nil, status: nil)
-        let user3 = User(id: "u3", name: "Алексей", avatarURL: nil, status: nil)
-
-        let message1 = Message(id: "m1", chatId: "1", sender: user1, text: "Привет!", media: nil, timestamp: Date(), isRead: true)
-        let message2 = Message(id: "m2", chatId: "2", sender: user2, text: "Документы отправлены.", media: nil, timestamp: Date(), isRead: false)
-        let message3 = Message(id: "m3", chatId: "3", sender: user3, text: "Как дела?", media: nil, timestamp: Date(), isRead: true)
-
-        let chat1 = Chat(id: "1", name: "Общий чат", isGroup: true, participants: [user1, user2, user3], lastMessage: message1)
-        let chat2 = Chat(id: "2", name: "Рабочая группа", isGroup: true, participants: [user2, user1], lastMessage: message2)
-        let chat3 = Chat(id: "3", name: "Личные сообщения", isGroup: false, participants: [user3, user1], lastMessage: message3)
-
-        let testChats = [chat1, chat2, chat3]
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(.success(testChats))
+        let url = baseURL.appendingPathComponent("channels")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                print("[MattermostAPIService] Ошибка: \(error.localizedDescription)")
+                return
+            }
+            guard let data = data else {
+                completion(.failure(NSError(domain: "MattermostAPI", code: 1, userInfo: [NSLocalizedDescriptionKey: "Нет данных от сервера"])))
+                return
+            }
+            do {
+                let channels = try JSONDecoder().decode([MattermostChannel].self, from: data)
+                let chats = channels.map { $0.toChat() }
+                completion(.success(chats))
+            } catch {
+                completion(.failure(error))
+                print("[MattermostAPIService] Ошибка парсинга: \(error)")
+            }
         }
+        task.resume()
     }
     
     // Получение сообщений чата/канала

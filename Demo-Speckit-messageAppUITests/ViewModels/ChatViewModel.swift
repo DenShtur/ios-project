@@ -25,17 +25,6 @@ class ChatViewModel: ObservableObject {
     }
     
     func sendMessage(text: String) {
-        // Для тестовой заглушки: просто добавляем сообщение локально
-        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
-        let newMessage = Message(
-            id: UUID().uuidString,
-            chatId: chat.id,
-            sender: chat.participants.first ?? User(id: "me", name: "Я", avatarURL: nil, status: nil),
-            text: text,
-            media: nil,
-            timestamp: Date(),
-            isRead: true
-        )
-        messages.append(newMessage)
+        // TODO: Создать Message и отправить через apiService
     }
 }
