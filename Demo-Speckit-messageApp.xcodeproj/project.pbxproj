@@ -24,9 +24,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8076AD79490A95384160F5AF /* ChatListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChatListView.swift; path = Views/ChatListView.swift; sourceTree = "<group>"; };
 		928271E52E93A83A00118C0D /* Demo-Speckit-messageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-Speckit-messageApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		928271F22E93A83C00118C0D /* Demo-Speckit-messageAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Demo-Speckit-messageAppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		928271FC2E93A83C00118C0D /* Demo-Speckit-messageAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Demo-Speckit-messageAppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1C2A437C7A7A80810EEF7CC /* ChatView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChatView.swift; path = Views/ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -64,14 +66,6 @@
 				"specs/001-ios-swiftui-mattermost/plan.md",
 				"specs/001-ios-swiftui-mattermost/spec.md",
 				"specs/001-ios-swiftui-mattermost/tasks.md",
-				Tests/Integration/MessageSyncIntegrationTests.swift,
-				Tests/Integration/PushNotificationIntegrationTests.swift,
-				Tests/Integration/ThemeIntegrationTests.swift,
-				Tests/Unit/ChatModelTests.swift,
-				Tests/Unit/MattermostAPIServiceTests.swift,
-				Tests/Unit/MediaModelTests.swift,
-				Tests/Unit/MessageModelTests.swift,
-				Tests/Unit/UserModelTests.swift,
 				ViewModels/ChatListViewModel.swift,
 				ViewModels/ChatViewModel.swift,
 				Views/ChatListView.swift,
@@ -79,23 +73,20 @@
 			);
 			target = 928271E42E93A83A00118C0D /* Demo-Speckit-messageApp */;
 		};
-		92A261DE2E9652B60047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageAppUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Tests/Unit/MediaModelTests.swift,
-			);
-			target = 928271FB2E93A83C00118C0D /* Demo-Speckit-messageAppUITests */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		928271E72E93A83A00118C0D /* Demo-Speckit-messageApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = "Demo-Speckit-messageApp";
 			sourceTree = "<group>";
 		};
 		928271F52E93A83C00118C0D /* Demo-Speckit-messageAppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = "Demo-Speckit-messageAppTests";
 			sourceTree = "<group>";
 		};
@@ -103,7 +94,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				92A261DB2E9651EE0047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageApp" target */,
-				92A261DE2E9652B60047C86A /* Exceptions for "Demo-Speckit-messageAppUITests" folder in "Demo-Speckit-messageAppUITests" target */,
 			);
 			path = "Demo-Speckit-messageAppUITests";
 			sourceTree = "<group>";
@@ -142,6 +132,7 @@
 				928271F52E93A83C00118C0D /* Demo-Speckit-messageAppTests */,
 				928271FF2E93A83C00118C0D /* Demo-Speckit-messageAppUITests */,
 				928271E62E93A83A00118C0D /* Products */,
+				BA17BF2AE8F5A58B47E5B9C3 /* Views */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +144,15 @@
 				928271FC2E93A83C00118C0D /* Demo-Speckit-messageAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BA17BF2AE8F5A58B47E5B9C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8076AD79490A95384160F5AF /* ChatListView.swift */,
+				A1C2A437C7A7A80810EEF7CC /* ChatView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +174,6 @@
 				928271E72E93A83A00118C0D /* Demo-Speckit-messageApp */,
 			);
 			name = "Demo-Speckit-messageApp";
-			packageProductDependencies = (
-			);
 			productName = "Demo-Speckit-messageApp";
 			productReference = 928271E52E93A83A00118C0D /* Demo-Speckit-messageApp.app */;
 			productType = "com.apple.product-type.application";
@@ -197,8 +195,6 @@
 				928271F52E93A83C00118C0D /* Demo-Speckit-messageAppTests */,
 			);
 			name = "Demo-Speckit-messageAppTests";
-			packageProductDependencies = (
-			);
 			productName = "Demo-Speckit-messageAppTests";
 			productReference = 928271F22E93A83C00118C0D /* Demo-Speckit-messageAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -220,8 +216,6 @@
 				928271FF2E93A83C00118C0D /* Demo-Speckit-messageAppUITests */,
 			);
 			name = "Demo-Speckit-messageAppUITests";
-			packageProductDependencies = (
-			);
 			productName = "Demo-Speckit-messageAppUITests";
 			productReference = 928271FC2E93A83C00118C0D /* Demo-Speckit-messageAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";

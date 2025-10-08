@@ -1,3 +1,5 @@
+// MARK: - Sync test comment from Copilot
+// MARK: - Copilot sync test comment
 import SwiftUI
 
 struct ChatListView: View {
